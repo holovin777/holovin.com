@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
@@ -39,3 +42,8 @@ urlpatterns = [
     # url(r'^', include(apps.get_app_config('oscar').urls[0])),
     path('', include(apps.get_app_config('oscar').urls[0])),  # > Django-2.0
 ]
+
+if settings.DEBUG:
+    # Server statics and uploaded media
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
