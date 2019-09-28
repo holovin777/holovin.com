@@ -105,3 +105,6 @@ venv.bak/
 
 # settings_local
 settings_local.py
+
+# static
+static/

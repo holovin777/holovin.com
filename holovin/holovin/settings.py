@@ -213,11 +213,13 @@ OSCAR_ORDER_STATUS_PIPELINE = {
     'Cancelled': (),
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 OSCAR_SHOP_NAME = 'holovin.com'
 
 
 # Try and import local settings which can be used to override any of the above.
 try:
-    from settings_local import *
+    from .settings_local import *
 except ImportError:
     pass
