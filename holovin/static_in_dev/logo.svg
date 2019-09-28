@@ -14,7 +14,7 @@
    viewBox="0 0 48.005684 47.258099"
    version="1.1"
    id="svg8"
-   sodipodi:docname="logo_black.svg"
+   sodipodi:docname="logo.svg"
    inkscape:version="0.92.4 5da689c313, 2019-01-14">
   <defs
      id="defs2" />
@@ -26,15 +26,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.52"
-     inkscape:cx="193.5327"
+     inkscape:cx="194.84849"
      inkscape:cy="24.932226"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1916"
-     inkscape:window-height="1076"
+     inkscape:window-width="1280"
+     inkscape:window-height="960"
      inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-y="27"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata5">
@@ -44,7 +44,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -55,15 +55,15 @@
      transform="translate(-80.189912,-117.44778)">
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:50.79999924px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="115.7581"
-       y="-90.913406"
+       style="font-style:normal;font-weight:normal;font-size:45.80872345px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.2385871"
+       x="118.31206"
+       y="-92.13459"
        id="text3715"
        transform="rotate(90)"><tspan
          sodipodi:role="line"
          id="tspan3713"
-         x="115.7581"
-         y="-90.913406"
-         style="font-size:50.80000305px;stroke-width:0.26458332">@</tspan></text>
+         x="118.31206"
+         y="-92.13459"
+         style="font-size:45.80872726px;stroke-width:0.2385871">@</tspan></text>
   </g>
 </svg>
