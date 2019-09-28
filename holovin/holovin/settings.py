@@ -214,3 +214,10 @@ OSCAR_ORDER_STATUS_PIPELINE = {
 }
 
 OSCAR_SHOP_NAME = 'holovin.com'
+
+
+# Try and import local settings which can be used to override any of the above.
+try:
+    from settings_local import *
+except ImportError:
+    pass
