@@ -1,5 +1,9 @@
 # [holovin.com](https://www.holovin.com)
 
+## About
+
+GNU e-commerce web application
+
 ## Quick installation
 
 ```bash
@@ -7,6 +11,7 @@ git clone https://github.com/holovin777/holovin.com.git
 cd holovin.com
 virtualenv venv
 source venv/bin/activate
+pip install -r requirements.txt
 python holovin/manage.py migrate
 python holovin/manage.py createsuperuser
 python holovin/manage.py runserver
@@ -22,5 +27,5 @@ python manage.py oscar_populate_countries
 ```
 By default, this command will mark all countries as a shipping country. Call it with the --no-shipping option to prevent that. You then need to manually mark at least one country as a shipping country.
 
-#### License
+##### License
 [GNU](https://choosealicense.com/licenses/gpl-3.0/)
