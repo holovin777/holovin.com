@@ -167,11 +167,13 @@ exit
 ```bash
 sudo vim /etc/apt/sources.list
 ```
+---
 ```python
 ...
 deb http://deb.debian.org/debian stretch-backports main contrib non-free
 deb-src http://deb.debian.org/debian stretch-backports main contrib non-free
 ```
+---
 ```bash
 sudo apt update
 sudo apt install python-certbot-nginx -t stretch-backports
