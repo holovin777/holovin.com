@@ -177,12 +177,12 @@ deb-src http://deb.debian.org/debian stretch-backports main contrib non-free
 ```bash
 sudo apt update
 sudo apt install python-certbot-nginx -t stretch-backports
-sudo vim /etc/nginx/sites-available/example.com
+sudo vim /etc/nginx/sites-available/holovin.com
 ```
 ---
 ```python
 ...
-server_name yourdomainnaim.org www.yourdomainnaim.com;
+server_name yourdomainnaim.org www.yourdomainnaim.org;
 ...
 ```
 ---
@@ -191,7 +191,6 @@ sudo nginx -t
 sudo systemctl reload nginx
 ```
 'Open :443 port'
-'Close :80 port'
 ```bash
 sudo certbot --nginx -d yourdomainnaim.org -d www.yourdomainnaim.org
 ```
