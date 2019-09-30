@@ -55,6 +55,7 @@ pip install -r requirements.txt
 
 vim holovin/holovin/settings_local.py
 ```
+
 ```python
 DEBUG = False
 
@@ -74,21 +75,27 @@ DATABASES = {
         'PORT': '',
     }
 }
----
+```
 
+```bash
 python holovin/manage.py migrate
 python holovin/manage.py collectstatic
 python holovin/manage.py createsuperuser
-- Open port 8000
+```
+
+ "Open port 8000"
+
+```bash
 python holovin/manage.py runserver 0:8000
 cd holovin
 gunicorn --bind 0.0.0.0:8000 holovin.wsgi
 deactivate
 cd ..
 
-
 sudo vim /etc/systemd/system/gunicorn.socket
----
+```
+
+```python
 [Unit]
 Description=gunicorn socket
 
@@ -97,10 +104,13 @@ ListenStream=/run/gunicorn.sock
 
 [Install]
 WantedBy=sockets.target
----
+```
 
+```bash
 sudo vim /etc/systemd/system/gunicorn.service
----
+```
+
+```python
 [Unit]
 Description=gunicorn daemon
 Requires=gunicorn.socket
@@ -118,8 +128,9 @@ ExecStart=/home/admin/holovin.com/venv/bin/gunicorn \
 
 [Install]
 WantedBy=multi-user.target
----
+```
 
+```bash
 sudo systemctl start gunicorn.socket
 sudo systemctl enable gunicorn.socket
 sudo systemctl status gunicorn.socket
@@ -133,7 +144,9 @@ sudo systemctl daemon-reload
 sudo systemctl restart gunicorn
 
 sudo vim /etc/nginx/sites-available/holovin.com
----
+```
+
+```python
 server {
     listen 80;
     server_name www.yordomainname.org yourdomainname.org;
@@ -148,16 +161,19 @@ server {
         proxy_pass http://unix:/run/gunicorn.sock;
     }
 }
----
+```
 
+```bash
 sudo ln -s /etc/nginx/sites-available/holovin.com /etc/nginx/sites-enabled
 sudo nginx -t
 sudo systemctl restart nginx
+```
 
-- Close port 8000
+ "Close port 8000"
 
+```bash
 exit
-
+```
 
 ### Initial data
 
