@@ -201,7 +201,7 @@ The default checkout process requires a shipping address with a country. Oscar u
 The easiest way to achieve this is to use country data from the pycountry package. Oscar ships with a management command to parse that data:
 ```bash
 pip install pycountry
-python manage.py oscar_populate_countries
+python holovin/manage.py oscar_populate_countries
 ```
 By default, this command will mark all countries as a shipping country. Call it with the --no-shipping option to prevent that. You then need to manually mark at least one country as a shipping country.
 
