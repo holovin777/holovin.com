@@ -1,11 +1,9 @@
 # [holovin.com](https://www.holovin.com)
 
 ## About
-
 GNU e-commerce web application
 
 ## Quick installation
-
 ```bash
 git clone https://github.com/holovin777/holovin.com.git
 cd holovin.com
@@ -18,8 +16,6 @@ python holovin/manage.py runserver
 ```
 
 ## Deploy with Postgres, Nginx, and Gunicorn on Debian 9
-### I used the VIM text editor
-
 ```bash
 sudo apt-get update
 sudo apt-get upgrade
@@ -27,7 +23,6 @@ sudo apt-get dist-upgrade
 sudo reboot
 sudo apt update
 sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib nginx curl
-
 sudo -u postgres psql
 ```
 ```sql
@@ -39,7 +34,6 @@ ALTER ROLE holovin SET timezone TO 'UTC';
 GRANT ALL PRIVILEGES ON DATABASE holovindb TO holovin;
 \q
 ```
-
 ```bash
 sudo -H pip3 install --upgrade pip
 sudo -H pip3 install virtualenv
@@ -52,10 +46,9 @@ cd holovin.com
 virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt
-
 vim holovin/holovin/settings_local.py
 ```
-
+---
 ```python
 DEBUG = False
 
@@ -76,25 +69,22 @@ DATABASES = {
     }
 }
 ```
-
+---
 ```bash
 python holovin/manage.py migrate
 python holovin/manage.py collectstatic
 python holovin/manage.py createsuperuser
 ```
-
- "Open port 8000"
-
+'Open :8000 port'
 ```bash
 python holovin/manage.py runserver 0:8000
 cd holovin
 gunicorn --bind 0.0.0.0:8000 holovin.wsgi
 deactivate
 cd ..
-
 sudo vim /etc/systemd/system/gunicorn.socket
 ```
-
+---
 ```python
 [Unit]
 Description=gunicorn socket
@@ -105,11 +95,11 @@ ListenStream=/run/gunicorn.sock
 [Install]
 WantedBy=sockets.target
 ```
-
+---
 ```bash
 sudo vim /etc/systemd/system/gunicorn.service
 ```
-
+---
 ```python
 [Unit]
 Description=gunicorn daemon
@@ -129,7 +119,7 @@ ExecStart=/home/admin/holovin.com/venv/bin/gunicorn \
 [Install]
 WantedBy=multi-user.target
 ```
-
+---
 ```bash
 sudo systemctl start gunicorn.socket
 sudo systemctl enable gunicorn.socket
@@ -142,10 +132,9 @@ sudo systemctl status gunicorn
 sudo journalctl -u gunicorn
 sudo systemctl daemon-reload
 sudo systemctl restart gunicorn
-
 sudo vim /etc/nginx/sites-available/holovin.com
 ```
-
+---
 ```python
 server {
     listen 80;
@@ -162,17 +151,47 @@ server {
     }
 }
 ```
-
+---
 ```bash
 sudo ln -s /etc/nginx/sites-available/holovin.com /etc/nginx/sites-enabled
 sudo nginx -t
 sudo systemctl restart nginx
 ```
-
- "Close port 8000"
-
+'Close :8000 port'
 ```bash
 exit
+```
+
+## Secure Nginx with Let's Encrypt on Debian 9
+
+```bash
+sudo vim /etc/apt/sources.list
+```
+```python
+...
+deb http://deb.debian.org/debian stretch-backports main contrib non-free
+deb-src http://deb.debian.org/debian stretch-backports main contrib non-free
+```
+```bash
+sudo apt update
+sudo apt install python-certbot-nginx -t stretch-backports
+sudo vim /etc/nginx/sites-available/example.com
+```
+---
+```python
+...
+server_name yourdomainnaim.org www.yourdomainnaim.com;
+...
+```
+---
+```bash
+sudo nginx -t
+sudo systemctl reload nginx
+```
+'Open :443 port'
+'Close :80 port'
+```bash
+sudo certbot --nginx -d yourdomainnaim.org -d www.yourdomainnaim.org
 ```
 
 ### Initial data
@@ -186,5 +205,6 @@ python manage.py oscar_populate_countries
 By default, this command will mark all countries as a shipping country. Call it with the --no-shipping option to prevent that. You then need to manually mark at least one country as a shipping country.
 
 
-##### License
-[GNU](https://choosealicense.com/licenses/gpl-3.0/)
+
+#### License [GNU](https://choosealicense.com/licenses/gpl-3.0/)
+
