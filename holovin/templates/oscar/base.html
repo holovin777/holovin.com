@@ -28,7 +28,7 @@
         {% endblock %}
     </head>
 
-    <body id="{% block body_id %}default{% endblock %}" class="{% block body_class %}default{% endblock %}" style="background-color: #A4A4A4;">
+    <body id="{% block body_id %}default{% endblock %}" class="{% block body_class %}default{% endblock %}" style="background-color: #A4A4A4;" background="{% static "oscar/background.svg" %}">
         {# Main content goes in this 'layout' block #}
         {% block layout %}{% endblock %}
 
