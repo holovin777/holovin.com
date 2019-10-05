@@ -205,7 +205,10 @@ python holovin/manage.py oscar_populate_countries
 ```
 By default, this command will mark all countries as a shipping country. Call it with the --no-shipping option to prevent that. You then need to manually mark at least one country as a shipping country.
 
+### Commands server
 
+sudo systemctl restart gunicorn
+sudo systemctl reload nginx
 
 #### License [GNU](https://choosealicense.com/licenses/gpl-3.0/)
 
