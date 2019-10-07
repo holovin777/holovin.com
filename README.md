@@ -207,8 +207,12 @@ By default, this command will mark all countries as a shipping country. Call it 
 
 ### Commands server
 
+```bash
+sudo ssh -i Downloads/Key.pem admin@0.0.0.0
+sudo scp -i /home/admin/Downloads/Key.pem /home/admin/Pictures/logo.svg admin@0.0.0.0:/home/admin/holovin.com/holovin/static_in_dev/logo.svg
 sudo systemctl restart gunicorn
 sudo systemctl reload nginx
+```
 
 #### License [GNU](https://choosealicense.com/licenses/gpl-3.0/)
 
