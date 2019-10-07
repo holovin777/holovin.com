@@ -109,3 +109,6 @@ settings_local.py
 # static and media files
 static/
 media/
+
+# templates
+templates/

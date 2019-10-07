@@ -1,7 +1,7 @@
 # [holovin.com](https://www.holovin.com)
 
 ## About
-GNU e-commerce web application
+E-commerce web application
 
 ## Quick installation
 ```bash
