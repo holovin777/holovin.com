@@ -111,4 +111,4 @@ static/
 media/
 
 # templates
-templates/
+#templates/
