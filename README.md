@@ -2,7 +2,6 @@
 
 ## About
 E-commerce web application
-
 ## Quick installation
 ```bash
 git clone https://github.com/holovin777/holovin.com.git
@@ -23,12 +22,12 @@ ALLOWED_HOSTS = ['www.yourdomainname.org', 'yourdomainname.org', '0.0.0.0']
 OSCAR_SHOP_NAME = 'YourShopName'
 ```
 ---
+```bash
 pip install -r requirements.txt
 python holovin/manage.py migrate
 python holovin/manage.py createsuperuser
 python holovin/manage.py runserver
 ```
-
 ## Deploy with Postgres, Nginx, and Gunicorn on Debian 9
 ```bash
 sudo apt-get update
