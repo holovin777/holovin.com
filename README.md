@@ -20,6 +20,8 @@ SECRET_KEY = 'enteryoursecretkeylikekrlud=jo8+97oo+&90i@a@4c$w1=g+iz#wup!m$_voqr
 ALLOWED_HOSTS = ['www.yourdomainname.org', 'yourdomainname.org', '0.0.0.0']
 
 OSCAR_SHOP_NAME = 'YourShopName'
+
+OSCAR_SHOP_TAGLINE = 'store'
 ```
 ---
 ```bash
@@ -73,6 +75,8 @@ SECRET_KEY = 'enteryoursecretkeylikekrlud=jo8+97oo+&90i@a@4c$w1=g+iz#wup!m$_voqr
 ALLOWED_HOSTS = ['www.yourdomainname.org', 'yourdomainname.org']
 
 OSCAR_SHOP_NAME = 'YourShopName'
+
+OSCAR_SHOP_TAGLINE = 'store'
 
 DATABASES = {
     'default': {
