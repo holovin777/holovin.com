@@ -6,9 +6,23 @@ E-commerce web application
 ## Quick installation
 ```bash
 git clone https://github.com/holovin777/holovin.com.git
-cd holovin.com
+mkdir holovin.com/holovin/templates
+cd holovin.com/holovin/templates
+git clone https://github.com/holovin777/templates.git .
+cd ../..
 virtualenv venv
 source venv/bin/activate
+vim holovin/holovin/settings_local.py
+```
+---
+```python
+SECRET_KEY = 'enteryoursecretkeylikekrlud=jo8+97oo+&90i@a@4c$w1=g+iz#wup!m$_voqrepf2%s'
+
+ALLOWED_HOSTS = ['www.yourdomainname.org', 'yourdomainname.org', '0.0.0.0']
+
+OSCAR_SHOP_NAME = 'YourShopName'
+```
+---
 pip install -r requirements.txt
 python holovin/manage.py migrate
 python holovin/manage.py createsuperuser
@@ -42,7 +56,10 @@ sudo apt install git
 git config --global user.name "YourName"
 git config --global user.email "your@mail.org"
 git clone https://github.com/holovin777/holovin.com.git
-cd holovin.com
+mkdir holovin.com/holovin/templates
+cd holovin.com/holovin/templates
+git clone https://github.com/holovin777/templates.git .
+cd ../..
 virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt
