@@ -57,10 +57,10 @@ sudo apt install git
 git config --global user.name "YourName"
 git config --global user.email "your@mail.org"
 git clone https://github.com/holovin777/holovin.com.git
-mkdir holovin.com/holovin/templates
-cd holovin.com/holovin/templates
-git clone https://github.com/holovin777/templates.git .
-cd ../..
+cd holovin.com/holovin
+git clone https://github.com/holovin777/templates.git
+git clone https://github.com/holovin777/static_in_dev.git
+cd ..
 virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt
