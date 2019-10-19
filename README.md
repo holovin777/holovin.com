@@ -78,6 +78,10 @@ OSCAR_SHOP_NAME = 'YourShopName'
 
 OSCAR_SHOP_TAGLINE = 'store'
 
+LANGUAGE_CODE = 'en-us'
+
+OSCAR_DEFAULT_CURRENCY = '$'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
