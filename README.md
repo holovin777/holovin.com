@@ -5,23 +5,27 @@ E-commerce web application
 ## Quick installation
 ```bash
 git clone https://github.com/holovin777/holovin.com.git
-mkdir holovin.com/holovin/templates
-cd holovin.com/holovin/templates
-git clone https://github.com/holovin777/templates.git .
-cd ../..
+cd holovin.com/holovin
+git clone https://github.com/holovin777/templates.git
+git clone https://github.com/holovin777/static_in_dev.git
+cd ..
 virtualenv venv
 source venv/bin/activate
 vim holovin/holovin/settings_local.py
 ```
 ---
 ```python
-SECRET_KEY = 'enteryoursecretkeylikekrlud=jo8+97oo+&90i@a@4c$w1=g+iz#wup!m$_voqrepf2%s'
+SECRET_KEY = 'entertkekekrlud=jo8+97oo+&90i@a@4c$w1=g+iz#wup!m$_voqrepf2%s'
 
-ALLOWED_HOSTS = ['www.yourdomainname.org', 'yourdomainname.org', '0.0.0.0']
+ALLOWED_HOSTS = ['*']
 
-OSCAR_SHOP_NAME = 'YourShopName'
+OSCAR_SHOP_NAME = 'holovin.com'
 
 OSCAR_SHOP_TAGLINE = 'store'
+
+LANGUAGE_CODE = 'en-us'
+
+OSCAR_DEFAULT_CURRENCY = '$'
 ```
 ---
 ```bash
