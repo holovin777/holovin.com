@@ -15,6 +15,15 @@ vim holovin/holovin/settings_local.py
 ```
 ---
 ```python
+import os
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static_in_dev"),
+]
+
 SECRET_KEY = 'entersecretkey!tkekekrlud=jo8+97oo+&90i@a@4c$w1=g+iz#wup!m$_voqrepf2%s'
 
 ALLOWED_HOSTS = ['*']
@@ -100,6 +109,15 @@ vim holovin/holovin/settings_local.py
 ```
 ---
 ```python
+import os
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static_in_dev"),
+]
+
 DEBUG = False
 
 SECRET_KEY = 'enteryoursecretkeylikekrlud=jo8+97oo+&90i@a@4c$w1=g+iz#wup!m$_voqrepf2%s'
