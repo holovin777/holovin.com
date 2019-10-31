@@ -15,7 +15,7 @@ vim holovin/holovin/settings_local.py
 ```
 ---
 ```python
-SECRET_KEY = 'entertkekekrlud=jo8+97oo+&90i@a@4c$w1=g+iz#wup!m$_voqrepf2%s'
+SECRET_KEY = 'entersecretkey!tkekekrlud=jo8+97oo+&90i@a@4c$w1=g+iz#wup!m$_voqrepf2%s'
 
 ALLOWED_HOSTS = ['*']
 
@@ -26,6 +26,34 @@ OSCAR_SHOP_TAGLINE = 'store'
 LANGUAGE_CODE = 'en-us'
 
 OSCAR_DEFAULT_CURRENCY = '$'
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/2.2/howto/static-files/
+
+# Absolute path to the directory that holds media.
+# Example: "/home/media/media.lawrence.com/"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# URL that handles the media served from MEDIA_ROOT. Make sure to use a
+# trailing slash if there is a path component (optional in other cases).
+# Examples: "http://media.lawrence.com", "http://example.com/media/"
+MEDIA_URL = '/media/'
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
+
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+    },
+}
+
 ```
 ---
 ```bash
@@ -34,7 +62,7 @@ python holovin/manage.py migrate
 python holovin/manage.py createsuperuser
 python holovin/manage.py runserver
 ```
-## Deploy with Postgres, Nginx, and Gunicorn on Debian 9
+## Deploy with Postgres, Nginx, and Gunicorn on Debian 9 (aws)
 ```bash
 sudo apt-get update
 sudo apt-get upgrade
@@ -96,6 +124,71 @@ DATABASES = {
         'PORT': '',
     }
 }
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/2.2/howto/static-files/
+
+# Absolute path to the directory that holds media.
+# Example: "/home/media/media.lawrence.com/"
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# URL that handles the media served from MEDIA_ROOT. Make sure to use a
+# trailing slash if there is a path component (optional in other cases).
+# Examples: "http://media.lawrence.com", "http://example.com/media/"
+#MEDIA_URL = '/media/'
+
+#STATIC_URL = '/static/'
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
+
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+    },
+}
+
+#AWS
+
+AWS_ACCESS_KEY_ID = '78G78870DFHFDGHFD'
+AWS_SECRET_ACCESS_KEY = 'fd90g78fd90g7890fd70g90dfxg8'
+AWS_STORAGE_BUCKET_NAME = 'bucketname'
+AWS_DEFAULT_ACL = None
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {
+            'CacheControl': 'max-age=86400',
+            }
+STATIC_LOCATION = 'static'
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, STATIC_LOCATION)
+STATICFILES_STORAGE = 'holovin.storage_backends.StaticStorage'
+PUBLIC_MEDIA_LOCATION = 'media'
+MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, PUBLIC_MEDIA_LOCATION)
+DEFAULT_FILE_STORAGE = 'holovin.storage_backends.PublicMediaStorage'
+
+```
+---
+```bash
+vim storage_backends.py
+```
+---
+```python
+from storages.backends.s3boto3 import S3Boto3Storage
+from django.conf import settings
+
+
+class StaticStorage(S3Boto3Storage):
+    location = 'static'
+    default_acl = 'public-read'
+
+
+class PublicMediaStorage(S3Boto3Storage):
+    location = 'media'
+    default_acl = 'public-read'
+    file_overwrite = False
 ```
 ---
 ```bash
@@ -170,9 +263,17 @@ server {
 
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
-        root /home/admin/holovin.com/holovin;
+        proxy_set_header Host 'holovinbucket.s3.amazonaws.com';
+        proxy_set_header Authorization '';
+        proxy_hide_header x-amz-id-2;
+        proxy_hide_header x-amz-request-id;
+        proxy_hide_header Set-Cookie;
+        proxy_ignore_headers "Set-Cookie";
+        proxy_intercept_errors on;
+        proxy_pass https://holovinbucket.s3.amazonaws.com/; # Edit your Amazon S3 Bucket name
+        expires 1y;
+        log_not_found off;
     }
-
     location / {
         include proxy_params;
         proxy_pass http://unix:/run/gunicorn.sock;

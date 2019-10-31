@@ -113,3 +113,6 @@ media/
 
 # templates
 templates/
+
+# aws
+storage_backends.py
