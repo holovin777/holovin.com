@@ -172,7 +172,7 @@ DEFAULT_FILE_STORAGE = 'holovin.storage_backends.PublicMediaStorage'
 ```
 ---
 ```bash
-vim storage_backends.py
+vim holovin/holovin/storage_backends.py
 ```
 ---
 ```python
