@@ -148,15 +148,10 @@ DATABASES = {
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-#MEDIA_URL = '/media/'
-
-#STATIC_URL = '/static/'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -207,6 +202,21 @@ class PublicMediaStorage(S3Boto3Storage):
     location = 'media'
     default_acl = 'public-read'
     file_overwrite = False
+```
+---
+'CORS configuration'
+---
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+<CORSRule>
+   <AllowedOrigin>*</AllowedOrigin>
+   <AllowedMethod>GET</AllowedMethod>
+   <AllowedMethod>HEAD</AllowedMethod>
+   <MaxAgeSeconds>3000</MaxAgeSeconds>
+   <AllowedHeader>*</AllowedHeader>
+</CORSRule>
+</CORSConfiguration>
 ```
 ---
 ```bash
