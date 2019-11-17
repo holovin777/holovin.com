@@ -1,7 +1,7 @@
 # [holovin.com](https://www.holovin.com)
 
 ## About
-E-commerce web application
+Web application
 ## Quick installation
 ```bash
 git clone https://github.com/holovin777/holovin.com.git
