@@ -9,7 +9,7 @@ cd holovin.com/holovin
 git clone https://github.com/holovin777/templates.git
 git clone https://github.com/holovin777/static_in_dev.git
 cd ..
-virtualenv venv
+python -m venv venv
 source venv/bin/activate
 vim holovin/holovin/settings_local.py
 ```
@@ -28,9 +28,9 @@ SECRET_KEY = 'entersecretkey!tkekekrlud=jo8+97oo+&90i@a@4c$w1=g+iz#wup!m$_voqrep
 
 ALLOWED_HOSTS = ['*']
 
-OSCAR_SHOP_NAME = 'holovin.com'
+OSCAR_SHOP_NAME = 'holovin'
 
-OSCAR_SHOP_TAGLINE = 'store'
+OSCAR_SHOP_TAGLINE = 'com'
 
 LANGUAGE_CODE = 'en-us'
 
