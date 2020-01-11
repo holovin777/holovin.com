@@ -81,6 +81,9 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'django_tables2',
     'storages',
+
+    # home
+    'home',
 ]
 
 SITE_ID = 1
