@@ -1,8 +1,9 @@
 # [holovin.com](https://www.holovin.com)
 
-## About
+### About
 Web application
-## Quick installation
+###
+ Quick installation
 ```bash
 git clone https://github.com/holovin777/holovin.com.git
 cd holovin.com/holovin
@@ -71,7 +72,7 @@ python holovin/manage.py migrate
 python holovin/manage.py createsuperuser
 python holovin/manage.py runserver
 ```
-## Deploy with Postgres, Nginx, and Gunicorn on Debian 9 (aws)
+### Deploy with Postgres, Nginx, and Gunicorn on Debian 9 (aws)
 ```bash
 sudo apt-get update
 sudo apt-get upgrade
@@ -131,6 +132,8 @@ OSCAR_SHOP_TAGLINE = 'store'
 LANGUAGE_CODE = 'en-us'
 
 OSCAR_DEFAULT_CURRENCY = '$'
+
+OSCAR_HOMEPAGE = '/home/'
 
 DATABASES = {
     'default': {
@@ -319,7 +322,7 @@ sudo systemctl restart nginx
 exit
 ```
 
-## Secure Nginx with Let's Encrypt on Debian 9
+### Secure Nginx with Let's Encrypt on Debian 9
 
 ```bash
 sudo vim /etc/apt/sources.list
@@ -352,7 +355,7 @@ sudo systemctl reload nginx
 sudo certbot --nginx -d yourdomainnaim.org -d www.yourdomainnaim.org
 ```
 
-### Initial data
+#### Initial data
 
 The default checkout process requires a shipping address with a country. Oscar uses a model for countries with flags that indicate which are valid shipping countries and so the country database table must be populated before a customer can check out.
 The easiest way to achieve this is to use country data from the pycountry package. Oscar ships with a management command to parse that data:
@@ -362,7 +365,7 @@ python holovin/manage.py oscar_populate_countries
 ```
 By default, this command will mark all countries as a shipping country. Call it with the --no-shipping option to prevent that. You then need to manually mark at least one country as a shipping country.
 
-### Commands server
+#### Commands server
 
 ```bash
 sudo ssh -i Downloads/Key.pem admin@0.0.0.0
@@ -371,5 +374,5 @@ sudo systemctl restart gunicorn
 sudo systemctl reload nginx
 ```
 
-#### License [GNU](https://choosealicense.com/licenses/gpl-3.0/)
+##### License [GNU](https://choosealicense.com/licenses/gpl-3.0/)
 
