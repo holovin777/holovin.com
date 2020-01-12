@@ -36,6 +36,8 @@ LANGUAGE_CODE = 'en-us'
 
 OSCAR_DEFAULT_CURRENCY = '$'
 
+OSCAR_HOMEPAGE = '/home/'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
