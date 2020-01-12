@@ -2,8 +2,7 @@
 
 ### About
 Web application
-###
- Quick installation
+### Quick installation
 ```bash
 git clone https://github.com/holovin777/holovin.com.git
 cd holovin.com/holovin
