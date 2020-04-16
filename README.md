@@ -145,6 +145,48 @@ git clone https://github.com/holovin777/holovin.com.git
 cd holovin.com/holovin
 git clone https://github.com/holovin777/templates.git
 git clone https://github.com/holovin777/static_in_dev.git
+vim templates/oscar/partials/footer.html
+```
+```html
+{% load staticfiles %}
+{% load i18n %}
+<footer class="footer container-fluid">
+    {% block footer %}
+        {% comment %}
+            Could be used for displaying links to privacy policy, terms of service, etc.
+            We have a CSS class defined:
+                <ul class="footer_links inline">
+                    ...
+                </ul>
+         {% endcomment %}
+        <div class="text-center">
+        <br>
+          <a class="" href="https://www.github.com/holovin777/holovin.com/">
+		  <img src="https://image.flaticon.com/icons/svg/1051/1051275.svg" height="40" class="d-inline-block align-top" alt="">&nbsp;&nbsp;
+          </a>
+	  {% comment %}
+	  <a class="" href="https://www.instagram.com/holovin777/">
+            <img src="https://image.flaticon.com/icons/svg/174/174855.svg" height="40" class="d-inline-block align-top" alt="">&nbsp;&nbsp;
+          </a>
+	  <a class="" href="https://www.youtube.com/channel/UCJGCyQHY92xsUgBuivu5-Hw/featured?view_as=subscriber">
+            <img src="https://image.flaticon.com/icons/svg/174/174883.svg" height="40" class="d-inline-block align-top" alt="">&nbsp;&nbsp;
+          </a>
+	  {% endcomment %}
+	  <br><br>
+<div class="text-center text-secondary">
+    <small>
+        Copyright © 2020
+        <a class="" href="/home">
+            <img src="{% static 'logowhite.svg' %}" height="27" class="d-inline-block align-top" alt="">
+             {{ shop_name }} <small class="text-secondary"> {{ shop_tagline }}</small>
+        </a>
+    </small>
+</div>
+	</div>
+    {% endblock %}
+</footer>
+```
+```bash
 cd ..
 virtualenv venv
 source venv/bin/activate
