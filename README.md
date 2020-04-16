@@ -9,7 +9,8 @@ cd holovin.com/holovin
 git clone https://github.com/holovin777/templates.git
 git clone https://github.com/holovin777/static_in_dev.git
 vim templates/partials/footer.html
----
+```
+```html
 {% load staticfiles %}
 {% load i18n %}
 <footer class="footer container-fluid">
@@ -47,8 +48,8 @@ vim templates/partials/footer.html
 	</div>
     {% endblock %}
 </footer>
----
-
+```
+```bash
 cd ..
 python -m venv venv
 source venv/bin/activate
