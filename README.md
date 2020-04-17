@@ -8,7 +8,7 @@ git clone https://github.com/holovin777/holovin.com.git
 cd holovin.com/holovin
 git clone https://github.com/holovin777/templates.git
 git clone https://github.com/holovin777/static_in_dev.git
-vim templates/partials/footer.html
+vim templates/oscar/partials/footer.html
 ```
 ```html
 {% load staticfiles %}
