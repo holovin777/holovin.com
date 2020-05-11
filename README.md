@@ -5,7 +5,7 @@ Web application
 ### Quick installation
 ```bash
 git clone https://github.com/holovin777/holovin.com.git
-cd holovin.com/holovin
+cd holovin.com
 git clone https://github.com/holovin777/templates.git
 git clone https://github.com/holovin777/static_in_dev.git
 vim templates/oscar/partials/footer.html
@@ -50,10 +50,9 @@ vim templates/oscar/partials/footer.html
 </footer>
 ```
 ```bash
-cd ..
 python -m venv venv
 source venv/bin/activate
-vim holovin/holovin/settings_local.py
+vim holovin/settings_local.py
 ```
 ---
 ```python
@@ -111,9 +110,9 @@ HAYSTACK_CONNECTIONS = {
 ---
 ```bash
 pip install -r requirements.txt
-python holovin/manage.py migrate
-python holovin/manage.py createsuperuser
-python holovin/manage.py runserver
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver
 ```
 ### Deploy with Postgres, Nginx, and Gunicorn on Debian 9 (aws)
 ```bash
@@ -142,7 +141,7 @@ sudo apt install git
 git config --global user.name "YourName"
 git config --global user.email "your@mail.org"
 git clone https://github.com/holovin777/holovin.com.git
-cd holovin.com/holovin
+cd holovin.com
 git clone https://github.com/holovin777/templates.git
 git clone https://github.com/holovin777/static_in_dev.git
 vim templates/oscar/partials/footer.html
@@ -187,11 +186,10 @@ vim templates/oscar/partials/footer.html
 </footer>
 ```
 ```bash
-cd ..
 virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt
-vim holovin/holovin/settings_local.py
+vim holovin/settings_local.py
 ```
 ---
 ```python
@@ -273,7 +271,7 @@ DEFAULT_FILE_STORAGE = 'holovin.storage_backends.PublicMediaStorage'
 ```
 ---
 ```bash
-vim holovin/holovin/storage_backends.py
+vim holovin/storage_backends.py
 ```
 ---
 ```python
@@ -308,17 +306,15 @@ class PublicMediaStorage(S3Boto3Storage):
 ```
 ---
 ```bash
-python holovin/manage.py migrate
-python holovin/manage.py collectstatic
-python holovin/manage.py createsuperuser
+python manage.py migrate
+python manage.py collectstatic
+python manage.py createsuperuser
 ```
 'Open :8000 port'
 ```bash
-python holovin/manage.py runserver 0:8000
-cd holovin
+python manage.py runserver 0:8000
 gunicorn --bind 0.0.0.0:8000 holovin.wsgi
 deactivate
-cd ..
 sudo vim /etc/systemd/system/gunicorn.socket
 ```
 ---
@@ -346,7 +342,7 @@ After=network.target
 [Service]
 User=admin
 Group=www-data
-WorkingDirectory=/home/admin/holovin.com/holovin
+WorkingDirectory=/home/admin/holovin.com/
 ExecStart=/home/admin/holovin.com/venv/bin/gunicorn \
           --access-logfile - \
           --workers 3 \
@@ -446,7 +442,7 @@ The default checkout process requires a shipping address with a country. Oscar u
 The easiest way to achieve this is to use country data from the pycountry package. Oscar ships with a management command to parse that data:
 ```bash
 pip install pycountry
-python holovin/manage.py oscar_populate_countries
+python manage.py oscar_populate_countries
 ```
 By default, this command will mark all countries as a shipping country. Call it with the --no-shipping option to prevent that. You then need to manually mark at least one country as a shipping country.
 
