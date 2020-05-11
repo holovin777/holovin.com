@@ -1,7 +1,7 @@
 Babel==2.7.0
 boto3==1.10.5
 botocore==1.13.5
-Django==2.2.10
+Django==2.2.12
 django-extra-views==0.11.0
 django-haystack==2.8.1
 django-oscar==2.0.3
