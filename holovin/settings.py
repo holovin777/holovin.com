@@ -192,7 +192,6 @@ OSCAR_ORDER_STATUS_PIPELINE = {
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-OSCAR_SHOP_NAME = 'holovin.com'
 
 
 # Try and import local settings which can be used to override any of the above.
