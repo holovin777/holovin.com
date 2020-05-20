@@ -16,6 +16,8 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(max_length=300, blank=True, null=True)
     text = models.TextField()
+    image_url = models.URLField(max_length=200, blank=True, null=True)
+    image_file = models.FileField(upload_to='postimages/', blank=True, null=True)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
 
