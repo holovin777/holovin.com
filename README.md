@@ -156,15 +156,6 @@ vim holovin/settings_local.py
 ```
 ---
 ```python
-import os
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static_in_dev"),
-]
-
 DEBUG = False
 
 SECRET_KEY = 'enteryoursecretkeylikekrlud=jo8+97oo+&90i@a@4c$w1=g+iz#wup!m$_voqrepf2%s'
@@ -191,29 +182,6 @@ DATABASES = {
         'PORT': '',
     }
 }
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.2/howto/static-files/
-
-# Absolute path to the directory that holds media.
-# Example: "/home/media/media.lawrence.com/"
-
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash if there is a path component (optional in other cases).
-# Examples: "http://media.lawrence.com", "http://example.com/media/"
-
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-)
-
-
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
-    },
-}
-
 #AWS
 
 AWS_ACCESS_KEY_ID = '78G78870DFHFDGHFD'
@@ -230,7 +198,6 @@ STATICFILES_STORAGE = 'holovin.storage_backends.StaticStorage'
 PUBLIC_MEDIA_LOCATION = 'media'
 MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, PUBLIC_MEDIA_LOCATION)
 DEFAULT_FILE_STORAGE = 'holovin.storage_backends.PublicMediaStorage'
-
 ```
 ---
 ```bash
