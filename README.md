@@ -56,15 +56,6 @@ vim holovin/settings_local.py
 ```
 ---
 ```python
-import os
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static_in_dev"),
-]
-
 SECRET_KEY = 'entersecretkey!tkekekrlud=jo8+97oo+&90i@a@4c$w1=g+iz#wup!m$_voqrepf2%s'
 
 ALLOWED_HOSTS = ['*']
@@ -78,34 +69,6 @@ LANGUAGE_CODE = 'en-us'
 OSCAR_DEFAULT_CURRENCY = '$'
 
 OSCAR_HOMEPAGE = '/home/'
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.2/howto/static-files/
-
-# Absolute path to the directory that holds media.
-# Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash if there is a path component (optional in other cases).
-# Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/media/'
-
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-)
-
-
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
-    },
-}
-
 ```
 ---
 ```bash
