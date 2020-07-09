@@ -72,6 +72,7 @@ OSCAR_HOMEPAGE = '/home/'
 ```
 ---
 ```bash
+pip install --upgrade pip
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py createsuperuser
@@ -151,6 +152,7 @@ vim templates/oscar/partials/footer.html
 ```bash
 virtualenv venv
 source venv/bin/activate
+pip install --upgrade pip
 pip install -r requirements.txt
 vim holovin/settings_local.py
 ```
