@@ -1,10 +1,10 @@
 Babel==2.7.0
 boto3==1.10.5
 botocore==1.13.5
-Django==2.2.13
+Django==2.2.15
 django-extra-views==0.11.0
 django-haystack==2.8.1
-django-oscar==2.0.4
+django-oscar==2.1.0
 django-phonenumber-field==2.0.1
 django-storages==1.7.2
 django-tables2==1.21.2
@@ -16,7 +16,7 @@ Faker==2.0.2
 gunicorn==19.9.0
 jmespath==0.9.4
 phonenumbers==8.10.19
-Pillow==6.2.2
+Pillow==7.2.0
 psycopg2==2.8.3
 purl==1.5
 pycountry==19.8.18
