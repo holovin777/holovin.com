@@ -3,7 +3,7 @@ boto3==1.10.5
 botocore==1.13.5
 Django==2.2.15
 django-extra-views==0.13.0
-django-haystack==3.0b1
+django-haystack==2.8.1 
 django-oscar==2.1.0
 django-phonenumber-field==3.0.0
 django-storages==1.7.2
