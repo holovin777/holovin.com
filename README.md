@@ -50,7 +50,7 @@ vim templates/oscar/partials/footer.html
 </footer>
 ```
 ```bash
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate
 vim holovin/settings_local.py
 ```
