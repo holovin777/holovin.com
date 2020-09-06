@@ -2,7 +2,9 @@
 
 ### About
 Open source e-commerce python web application
+
 Templates repository are located [here](https://github.com/holovin777/templates)
+
 Static files are located [here](https://github.com/holovin777/static_in_dev)
 ### Quick installation
 ```bash
