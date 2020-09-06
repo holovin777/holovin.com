@@ -1,7 +1,9 @@
 # [holovin.com](https://www.holovin.com)
 
 ### About
-Web application
+Open source e-commerce python web application
+Templates repository are located [here](https://github.com/holovin777/templates)
+Static files are located [here](https://github.com/holovin777/static_in_dev)
 ### Quick installation
 ```bash
 git clone https://github.com/holovin777/holovin.com.git
