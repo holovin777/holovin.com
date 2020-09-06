@@ -69,6 +69,8 @@ LANGUAGE_CODE = 'en-us'
 OSCAR_DEFAULT_CURRENCY = '$'
 
 OSCAR_HOMEPAGE = '/home/'
+
+#OSCAR_USE_LESS = True
 ```
 ---
 ```bash
@@ -173,6 +175,8 @@ LANGUAGE_CODE = 'en-us'
 OSCAR_DEFAULT_CURRENCY = '$'
 
 OSCAR_HOMEPAGE = '/home/'
+
+#OSCAR_USE_LESS = True
 
 DATABASES = {
     'default': {
