@@ -84,19 +84,16 @@ python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
 ```
-### Deploy with Postgres, Nginx, and Gunicorn on Debian 9 (aws)
+### Deploy with Postgres, Nginx, and Gunicorn on Debian 10 (aws)
 ```bash
 sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get dist-upgrade
-sudo reboot
 sudo apt update
 sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib nginx curl
 sudo -u postgres psql
 ```
 ```sql
 CREATE DATABASE holovindb;
-CREATE USER holovin WITH PASSWORD 'password';
+CREATE USER holovin WITH PASSWORD 'yourdbpassword';
 ALTER ROLE holovin SET client_encoding TO 'utf8';
 ALTER ROLE holovin SET default_transaction_isolation TO 'read committed';
 ALTER ROLE holovin SET timezone TO 'UTC';
@@ -146,7 +143,7 @@ vim templates/oscar/partials/footer.html
     <small>
         Copyright © 2020
         <a class="" href="/home">
-            <img src="{% static 'logowhite.svg' %}" height="27" class="d-inline-block align-top" alt="">
+            <img src="{% static 'logos/logowhite.svg' %}" height="27" class="d-inline-block align-top" alt="">
              {{ shop_name }} <small class="text-secondary"> {{ shop_tagline }}</small>
         </a>
     </small>
@@ -187,7 +184,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'holovindb',
         'USER': 'holovin',
-        'PASSWORD': 'password',
+        'PASSWORD': 'yourdbpassword',
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -325,21 +322,12 @@ sudo systemctl restart nginx
 exit
 ```
 
-### Secure Nginx with Let's Encrypt on Debian 9
+### Secure Nginx with Let's Encrypt on Debian 10
 
 ```bash
-sudo vim /etc/apt/sources.list
-```
----
-```python
-...
-deb http://deb.debian.org/debian stretch-backports main contrib non-free
-deb-src http://deb.debian.org/debian stretch-backports main contrib non-free
-```
----
-```bash
 sudo apt update
-sudo apt install python-certbot-nginx -t stretch-backports
+sudo apt install python3-acme python3-certbot python3-mock python3-openssl python3-pkg-resources python3-pyparsing python3-zope.interface
+sudo apt install python3-certbot-nginx
 sudo vim /etc/nginx/sites-available/holovin.com
 ```
 ---
