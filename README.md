@@ -202,9 +202,6 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {
             'CacheControl': 'max-age=86400',
             }
-STATIC_LOCATION = 'static'
-STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, STATIC_LOCATION)
-STATICFILES_STORAGE = 'holovin.storage_backends.StaticStorage'
 PUBLIC_MEDIA_LOCATION = 'media'
 MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, PUBLIC_MEDIA_LOCATION)
 DEFAULT_FILE_STORAGE = 'holovin.storage_backends.PublicMediaStorage'
@@ -217,12 +214,6 @@ vim holovin/storage_backends.py
 ```python
 from storages.backends.s3boto3 import S3Boto3Storage
 from django.conf import settings
-
-
-class StaticStorage(S3Boto3Storage):
-    location = 'static'
-    default_acl = 'public-read'
-
 
 class PublicMediaStorage(S3Boto3Storage):
     location = 'media'
@@ -315,16 +306,7 @@ server {
 
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
-        proxy_set_header Host 'holovinbucket.s3.amazonaws.com';
-        proxy_set_header Authorization '';
-        proxy_hide_header x-amz-id-2;
-        proxy_hide_header x-amz-request-id;
-        proxy_hide_header Set-Cookie;
-        proxy_ignore_headers "Set-Cookie";
-        proxy_intercept_errors on;
-        proxy_pass https://holovinbucket.s3.amazonaws.com/; # Edit your Amazon S3 Bucket name
-        expires 1y;
-        log_not_found off;
+        root /home/admin/holovin.com;
     }
     location / {
         include proxy_params;
