@@ -1,7 +1,7 @@
 # [holovin.com](https://www.holovin.com)
 
 ### About
-Open source e-commerce python web application
+Python django oscar web application
 
 Templates repository are located [here](https://github.com/holovin777/templates)
 
